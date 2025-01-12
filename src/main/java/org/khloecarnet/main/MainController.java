@@ -28,6 +28,8 @@ public class MainController {
     private Label prob3;
     @FXML
     private Label warning;
+    @FXML
+    private Button btnReset;
 
     private final int rows = 4;
     private final int cols = 4;
@@ -70,6 +72,10 @@ public class MainController {
 
         btnCompute.setOnAction(event -> {
             computeProbability();
+        });
+
+        btnReset.setOnAction(event -> {
+            resetGrid();
         });
 
     }
@@ -197,7 +203,40 @@ public class MainController {
         return lines;
     }
 
+    private void resetGrid(){
+        for (int row = 0; row < rows; row++){
+            for (int col = 0; col < cols; col++) {
+                // 重置数组
+                gridState[row][col] = false;
 
+                // 重置表格标签
+                Label label = (Label) getNodeFromGridPane(gridPane, col, row);
+                if (label != null){
+                    label.setText("O");
+                    label.setTextFill(Color.RED);
+                }
+            }
+        }
+
+        prob0.setText("41.54%");
+        prob1.setText("47.90%");
+        prob2.setText("10.35%");
+        prob3.setText("0.21%");
+
+        warning.setVisible(false);
+    }
+
+    private javafx.scene.Node getNodeFromGridPane(GridPane gridPane, int row, int col){
+        for (javafx.scene.Node node : gridPane.getChildren()) {
+            if (GridPane.getColumnIndex(node) != null && GridPane.getRowIndex(node) != null
+                    && GridPane.getColumnIndex(node) == col
+                    && GridPane.getRowIndex(node) == row) {
+                return node;
+            }
+        }
+        return null;
+
+    }
 
 
 
