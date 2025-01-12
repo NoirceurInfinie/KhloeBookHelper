@@ -24,7 +24,7 @@
             <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label layoutX="52.0" layoutY="66.0" text="解放大脑！天书计算器 v1.0">
+      <Label layoutX="52.0" layoutY="66.0" text="解放大脑！天书计算器 v1.1">
          <font>
             <Font name="DengXian Light" size="33.0" />
          </font>
